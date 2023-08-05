@@ -3,6 +3,7 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 
 const shuffle = require('./filters/shuffle.js');
 const htmlmin = require('html-minifier');
+const packagejson = require('./package.json');
 
 require('dotenv').config();
 
@@ -49,7 +50,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addShortcode(
     'screenshotUrl',
     (path) =>
-      `/screenshot/${encodeURIComponent(path)}/_cache`
+      `/screenshot/${encodeURIComponent(path)}/_${packagejson['screenshot-api-hash']}`
   );
 
   // Return config settings
