@@ -1,3 +1,6 @@
+[functions]
+  directory = "functions"
+
 [build]
     publish = '_site'
     command = 'npm run build'
@@ -6,3 +9,9 @@
   from = "/sites/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/screenshot/*"
+  to = "/.netlify/builders/screenshot"
+  status = 200
+  force = true

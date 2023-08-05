@@ -47,16 +47,13 @@ module.exports = (eleventyConfig) => {
     }
     return content;
   });
-
   // Shortcodes
-  eleventyConfig.addShortcode(
-    'cloudinaryUrl',
-    (path, transforms) =>
-      `https://res.cloudinary.com/${
-        process.env.CLOUDINARY_CLOUD_NAME
-      }/image/upload/${transforms}/${filenamifyUrl(path, {
+    eleventyConfig.addShortcode(
+    'screenshotUrl',
+    (path) =>
+      `/screenshot/${filenamifyUrl(path, {
         replacement: '',
-      })}.png`
+      })}`
   );
 
   // Return config settings
