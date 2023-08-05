@@ -1,5 +1,3 @@
-const filenamifyUrl = require('filenamify-url');
-
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 // const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
@@ -51,9 +49,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addShortcode(
     'screenshotUrl',
     (path) =>
-      `/screenshot/${filenamifyUrl(path, {
-        replacement: '',
-      })}`
+      `/screenshot/${encodeURIComponent(path)}/_cache`
   );
 
   // Return config settings

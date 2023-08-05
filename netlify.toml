@@ -6,12 +6,12 @@
     command = 'npm run build'
 
 [[redirects]]
-  from = "/sites/*"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
   from = "/screenshot/*"
   to = "/.netlify/builders/screenshot"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/sites/*"
+  to = "/index.html"
+  status = 200

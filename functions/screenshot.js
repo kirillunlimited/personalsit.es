@@ -79,9 +79,10 @@ async function screenshot(url, { format, viewport, dpr = 1, withJs = true, wait,
 async function handler(event, context) {
   // e.g. /https%3A%2F%2Fwww.11ty.dev%2F/small/1:1/smaller/
   let pathSplit = event.path.split("/").filter(entry => !!entry);
-  let [url, size, aspectratio, zoom, cachebuster] = pathSplit;
+  let [_, url, size, aspectratio, zoom, cachebuster] = pathSplit;
   let format = "jpeg"; // hardcoded for now, but png and webp are supported!
-  let viewport = [600, 375];
+  let viewport = [];
+  viewport = [600, 375];
 
   // Manage your own frequency by using a _ prefix and then a hash buster string after your URL
   // e.g. /https%3A%2F%2Fwww.11ty.dev%2F/_20210802/ and set this to today’s date when you deploy
@@ -127,7 +128,15 @@ async function handler(event, context) {
   aspectratio = aspectratio || "1:1";
   size = size || "small";
   zoom = zoom || "standard";
-  dpr = 1;
+
+  let dpr;
+  if(zoom === "bigger") {
+    dpr = 1.4;
+  } else if(zoom === "smaller") {
+    dpr = 0.71428571;
+  } else if(zoom === "standard") {
+    dpr = 1;
+  }
 
   url = decodeURIComponent(url);
 
