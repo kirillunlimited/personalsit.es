@@ -7,6 +7,8 @@ const packagejson = require('./package.json');
 
 require('dotenv').config();
 
+const screenshotApiPath = 'https://personalsites-screenshots-demo.netlify.app/screenshot';
+
 module.exports = (eleventyConfig) => {
   // Pass through
   eleventyConfig.addPassthroughCopy('assets');
@@ -50,7 +52,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addShortcode(
     'screenshotUrl',
     (path) =>
-      `/screenshot/${encodeURIComponent(path)}/_${packagejson['screenshot-api-hash']}`
+      `${screenshotApiPath}/${encodeURIComponent(path)}/_${packagejson['screenshot-api-hash']}`
   );
 
   // Return config settings
