@@ -9,6 +9,8 @@ require('dotenv').config();
 
 const screenshotApiPath = 'https://personalsites-screenshots-demo.netlify.app/screenshot';
 
+
+
 module.exports = (eleventyConfig) => {
   // Pass through
   eleventyConfig.addPassthroughCopy('assets');
